@@ -1432,6 +1432,22 @@ router.patch(
         }
       : null;
 
+    if (newAuctionDetails.startPrice <= 0) {
+      throw new BusinessError(
+        400,
+        "Invalid start price",
+        "Start price must be greater than 0"
+      );
+    }
+
+    if (newAuctionDetails.spread < 0) {
+      throw new BusinessError(
+        400,
+        "Invalid spread",
+        "Spread must be greater than or equal to 0"
+      );
+    }
+
     if (
       newAuctionDetails.startTime &&
       new Date(newAuctionDetails.startTime).getTime() < Date.now()
