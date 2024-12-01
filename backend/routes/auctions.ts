@@ -1440,11 +1440,11 @@ router.patch(
       );
     }
 
-    if (newAuctionDetails.spread < 0) {
+    if (newAuctionDetails.spread <= 0) {
       throw new BusinessError(
         400,
         "Invalid spread",
-        "Spread must be greater than or equal to 0"
+        "Spread must be greater than 0"
       );
     }
 
